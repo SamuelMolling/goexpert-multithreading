@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"time"
 )
@@ -36,7 +36,7 @@ func getCEP(url string, c chan string) {
 	}
 	defer resp.Body.Close()
 
-	body, readErr := ioutil.ReadAll(resp.Body)
+	body, readErr := io.ReadAll(resp.Body)
 	if readErr != nil {
 		fmt.Println(readErr)
 	}
